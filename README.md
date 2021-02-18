@@ -1,3 +1,6 @@
-- install react-hot-toast
-- add it to _app.js
-- test it by adding a button to home page
+- export googleAuthProvider 
+- add three components of SignInButton, SigOutButton, UsernameForm to entry.js
+- Add sig in with google button if user is null, show usernameForm if username is null, otherwise Signout
+- Implement login code
+- Test app, and check IndexedDB from dev tools
+- download Google icon curl https://raw.githubusercontent.com/fireship-io/next-firebase-course/main/public/google.png --output ./public/google.png
