@@ -1,6 +1,5 @@
-- export googleAuthProvider 
-- add three components of SignInButton, SigOutButton, UsernameForm to entry.js
-- Add sig in with google button if user is null, show usernameForm if username is null, otherwise Signout
-- Implement login code
-- Test app, and check IndexedDB from dev tools
-- download Google icon curl https://raw.githubusercontent.com/fireship-io/next-firebase-course/main/public/google.png --output ./public/google.png
+- create context.js file
+- user createContext and set {user:null, username: null}
+- export the UserContext
+- in _app.js use context provider and wrap entire of app, for test set a default value
+- In navbar.js and enter.js useContext for UserContext and init user and username
