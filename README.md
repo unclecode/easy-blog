@@ -1,3 +1,4 @@
+- Fix photoUrl to photoURL
 - Implement onChange and check UI impact
 - Implement checkUsername function and call it with useEffect for formValue 
 - npm i lodash.debounce
