@@ -1,5 +1,6 @@
-- Create the UI for UsernameForm
-- Add isValid, loading, formValue
-- onSubmit, onChange
-- UsernameMessage component
-- useContext to bring user and username
+- Implement onChange and check UI impact
+- Implement checkUsername function and call it with useEffect for formValue 
+- npm i lodash.debounce
+- wrap checkUsername function body in debounce
+- wrap it in useCallBack to memoize the debounce object
+- implement onSubmit use batch process to update users and usernames collections
