@@ -1,5 +1,6 @@
-- create context.js file
-- user createContext and set {user:null, username: null}
-- export the UserContext
-- in _app.js use context provider and wrap entire of app, for test set a default value
-- In navbar.js and enter.js useContext for UserContext and init user and username
+- creat a custom hook useUserData
+- Implement useAuthState that return user object
+- Using useEffect on user object, get a query to user collection, and set username for it
+- At this state we don't have username, so it will return UsernameForm, add SignOutButton to show the sign out
+- You will see Login bcoz in Navbar we do not render it when username is not null
+- U may get some errors in console, if Firestore API is not enable just follow given links

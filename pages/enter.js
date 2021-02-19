@@ -4,6 +4,7 @@ import { auth, googleAuthProvider } from "../libs/firebase";
 
 export default function EnterPage({}) {
     const {user, username} = useContext(UserContext);
+    console.log(username);
     return (
         <main>
             {user ? (
@@ -32,4 +33,8 @@ function SignInButton() {
 function SignOutButton() {
     return <button onClick={() => auth.signOut()}>Sign Out</button>;
 }
-function UsernameForm() { return null;}
+function UsernameForm() { return (
+    <>
+        <SignOutButton></SignOutButton>
+    </>
+);}
