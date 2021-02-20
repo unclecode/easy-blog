@@ -13,8 +13,27 @@ const firebaseConfig = {
     measurementId: "G-VLR7Q15FWR",
 };
 
-if (!firebase.apps.length){
-    firebase.initializeApp(firebaseConfig)
+if (!firebase.apps.length) {
+    firebase.initializeApp(firebaseConfig);
+}
+
+export const getUserWithUsername = async (username) => {
+    const query = firestore
+        .collection("users")
+        .where("username", "==", username)
+        .limit(1);
+    const userDoc = (await query.get()).docs[0];
+    return userDoc;
+};
+
+export function postToJSON(doc) {
+    const data = doc.data();
+    return {
+        ...data,
+        // Gotcha! firestore timestamp NOT serializable to JSON. Must convert to milliseconds
+        createdAt: data?.createdAt.toMillis() || 0,
+        updatedAt: data?.updatedAt.toMillis() || 0,
+    };
 }
 
 export const auth = firebase.auth();

@@ -1,7 +1,8 @@
-- Fix photoUrl to photoURL
-- Implement onChange and check UI impact
-- Implement checkUsername function and call it with useEffect for formValue 
-- npm i lodash.debounce
-- wrap checkUsername function body in debounce
-- wrap it in useCallBack to memoize the debounce object
-- implement onSubmit use batch process to update users and usernames collections
+- Set up debug for next js https://nextjs.org/docs/advanced-features/debugging
+- Have a mock data in database
+- Create UserProfile component
+- Create PostFeed, PostItem
+- Create getUserWithUsername, postToJSON in firebase.js
+- Implement [username]/index.js
+- Add getServerSideProps to fetch the user and then her posts (published ones)
+- You can test and try at different stages to see how this SSR works.  
