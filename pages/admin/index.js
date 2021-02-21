@@ -1,7 +1,11 @@
+import AuthCheck from "../../components/AuthCheck";
+
 export default function AdminPostsPages({ }) {
   return (
     <main>
-        <h1>Admin</h1>
+        <AuthCheck>
+            <div>Admin page</div>
+        </AuthCheck>
     </main>
   )
 }

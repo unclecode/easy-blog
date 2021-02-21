@@ -1,4 +1,3 @@
-- Create a component Metatags.js
-- Add it to _app.js
-- Add to slug.js
-- Add to user page and other pages
+- Create AuthCheck component
+- Add it to admin page
+- log out test it
