@@ -5,6 +5,7 @@ import {
 } from "../../libs/firebase";
 import { useDocumentData } from "react-firebase-hooks/firestore";
 import PostContent from "../../components/PostContent";
+import Metatags from "../../components/Metatags";
 
 
 export async function getStaticProps({ params }) {
@@ -62,6 +63,7 @@ export default function UserPostPage(props) {
 
     return (
         <main className="container">
+            <Metatags title={readyPost.title} description={readyPost.title}/>
             <section>
                 <PostContent post={readyPost} />
             </section>

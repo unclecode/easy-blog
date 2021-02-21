@@ -1,3 +1,4 @@
-- For both username index.js and slug.js we should check if userDoc doesn't exist the return { notFound: true}, for slug.js we should do it in getStaticProps
-- add pages/404.js for customized
-- This can be added to any page
+- Create a component Metatags.js
+- Add it to _app.js
+- Add to slug.js
+- Add to user page and other pages

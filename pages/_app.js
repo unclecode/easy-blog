@@ -1,4 +1,5 @@
 import { Toaster } from "react-hot-toast";
+import Metatags from "../components/Metatags";
 import Navbar from "../components/Navbar";
 import { UserContext } from "../libs/context";
 import { useUserData } from "../libs/hooks";
@@ -10,6 +11,7 @@ function MyApp({ Component, pageProps }) {
     return (
         <>
             <UserContext.Provider value={userData}>
+                <Metatags/>
                 <Navbar />
                 <Component {...pageProps} />
                 <Toaster />
