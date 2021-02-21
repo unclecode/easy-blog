@@ -11,6 +11,12 @@ export async function getStaticProps({ params }) {
     const { username, slug } = params;
     const userDoc = await getUserWithUsername(username);
 
+    if (!userDoc){
+        return {
+            notFound: true
+        }
+    }
+
     let post, path;
     if (userDoc) {
         const postRef = firestore.doc(`users/${userDoc.id}/posts/${slug}`);

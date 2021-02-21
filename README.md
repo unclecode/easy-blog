@@ -1,8 +1,2 @@
-- Fix a bug in home page, that typeof last.createdAt nor cursor, if it is === number 
-- We want to fo hydration. Means although blog post page are ISR, but also we make a reactive connection to Firestore document related to the rendered post. However, already we have the data from server. But if data change the hook will be activated and we change the post data realtime.
-- npm i react-markdown
-- Create a component PostContent
-- In slug.js file add useDocumentData hook over a firestore ref from the "path" which is added to props in server side
-- Add html content for the page
-- Try to change data in firestore and check reactivity
-- Add a debugger after realTimePost and see how createdAt type is different when it comes from server
+- For both username index.js and slug.js we should check if userDoc doesn't exist the return { notFound: true}, for slug.js we should do it in getStaticProps
+- add pages/404.js for customized
