@@ -1,8 +1,8 @@
-- Set up debug for next js https://nextjs.org/docs/advanced-features/debugging
-- Have a mock data in database
-- Create UserProfile component
-- Create PostFeed, PostItem
-- Create getUserWithUsername, postToJSON in firebase.js
-- Implement [username]/index.js
-- Add getServerSideProps to fetch the user and then her posts (published ones)
-- You can test and try at different stages to see how this SSR works.  
+- Fix a bug in home page, that typeof last.createdAt nor cursor, if it is === number 
+- We want to fo hydration. Means although blog post page are ISR, but also we make a reactive connection to Firestore document related to the rendered post. However, already we have the data from server. But if data change the hook will be activated and we change the post data realtime.
+- npm i react-markdown
+- Create a component PostContent
+- In slug.js file add useDocumentData hook over a firestore ref from the "path" which is added to props in server side
+- Add html content for the page
+- Try to change data in firestore and check reactivity
+- Add a debugger after realTimePost and see how createdAt type is different when it comes from server
