@@ -1,3 +1,17 @@
-- Create AuthCheck component
-- Add it to admin page
-- log out test it
+- Go to admin/slug
+- Creat PostManager and PostForm component
+- Get postRef from users/uis/posts/slug
+- get slug from router query
+- add preview state
+- use useDocumentDataOnce for postRef and get the post data
+- create PostManager html body
+- npm install react-hook-form
+- For PostForm:
+- const { register, handleSubmit, reset, watch } = useForm({ defaultValues, mode: 'onChange' });
+- Add html, start by form
+- implement updatePost function
+- Reminder: In _app.js we added custom hook useUserData that returns user data {user, username}
+- In _app.js we passed this ac context value using context provider.
+- Within useUserData we have used useAuthState hook (from react-firebase-hook), that will return user object, then change in user object let useEffect to be triggered and within that we get username from database and update it.
+- This change bring an update for _app.js that uses userData in context provider value
+- Now all components usine useContext(UserContext) has access to these information {user, username}. Specially AuthCheck is helpful now bcoz it render children component when username is not null

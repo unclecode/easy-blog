@@ -31,8 +31,8 @@ export function postToJSON(doc) {
     return {
         ...data,
         // Gotcha! firestore timestamp NOT serializable to JSON. Must convert to milliseconds
-        createdAt: data?.createdAt.toMillis() || 0,
-        updatedAt: data?.updatedAt.toMillis() || 0,
+        createdAt: data?.createdAt?.toMillis() || 0,
+        updatedAt: data?.updatedAt?.toMillis() || 0,
     };
 }
 
@@ -40,6 +40,7 @@ export const auth = firebase.auth();
 export const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
 export const storage = firebase.storage();
 export const firestore = firebase.firestore();
+
 
 export const serverTimestamp = firebase.firestore.FieldValue.serverTimestamp;
 export const fromMillis = firebase.firestore.Timestamp.fromMillis;

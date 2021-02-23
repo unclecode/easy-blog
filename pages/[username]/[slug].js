@@ -6,6 +6,8 @@ import {
 import { useDocumentData } from "react-firebase-hooks/firestore";
 import PostContent from "../../components/PostContent";
 import Metatags from "../../components/Metatags";
+import { useContext } from "react";
+import { UserContext } from "../../libs/context";
 
 
 export async function getStaticProps({ params }) {
@@ -56,6 +58,8 @@ export default function UserPostPage(props) {
     const { post, path } = props;
     const postRef = firestore.doc(path);
     const [realtimePost] = useDocumentData(postRef);
+
+
 
     // debugger;
     // first time post is genereated in server and may not have anything for realtimePost
