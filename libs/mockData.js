@@ -29,4 +29,14 @@ async function addPosts() {
     }
 }
 
-addPosts();
+
+const removeBadPost = async () => {
+    let ref = db.collectionGroup("posts").where("username", '<', '');;
+    let snapshot = await ref.get();
+    snapshot.docs.map(d=>{
+        console.log(d.data().username);
+    })
+
+}
+// addPosts();
+removeBadPost();

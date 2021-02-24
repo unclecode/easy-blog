@@ -6,18 +6,15 @@ import {
 import { useDocumentData } from "react-firebase-hooks/firestore";
 import PostContent from "../../components/PostContent";
 import Metatags from "../../components/Metatags";
-import { useContext } from "react";
-import { UserContext } from "../../libs/context";
-
 
 export async function getStaticProps({ params }) {
     const { username, slug } = params;
     const userDoc = await getUserWithUsername(username);
 
-    if (!userDoc){
+    if (!userDoc) {
         return {
-            notFound: true
-        }
+            notFound: true,
+        };
     }
 
     let post, path;
@@ -40,16 +37,16 @@ export async function getStaticProps({ params }) {
 
 export async function getStaticPaths() {
     const snapshot = await firestore.collectionGroup("posts").get();
-    return {
-        paths: snapshot.docs.map((d) => {
-            const { username, slug } = d.data();
+    const paths = snapshot.docs
+        .filter((d) => Boolean(d.data().username))
+        .map((doc) => {
+            const { slug, username } = doc.data();
             return {
-                params: {
-                    username,
-                    slug,
-                },
+                params: { username: username.toString(), slug },
             };
-        }),
+        });
+    return {
+        paths,
         fallback: "blocking",
     };
 }
@@ -59,15 +56,13 @@ export default function UserPostPage(props) {
     const postRef = firestore.doc(path);
     const [realtimePost] = useDocumentData(postRef);
 
-
-
     // debugger;
     // first time post is genereated in server and may not have anything for realtimePost
     const readyPost = realtimePost || post;
 
     return (
         <main className="container">
-            <Metatags title={readyPost.title} description={readyPost.title}/>
+            <Metatags title={readyPost.title} description={readyPost.title} />
             <section>
                 <PostContent post={readyPost} />
             </section>

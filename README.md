@@ -6,8 +6,13 @@
 - use useDocumentDataOnce for postRef and get the post data
 - create PostManager html body
 - npm install react-hook-form
-- Use formState, erros from useForm hook
-- wherever ref={register} is used we can pass validation rules, apply this for textare
-- check errors.content and if has value show a <p>{errors.content.message}</p>
-- extract isDirty and isValid from formState
-- use disabled={!isValid || !isDirty}
+- enable storage in firebase console
+- In firebase.js gey access to STATE_CHANGED
+- Create ImageUpload component
+- Add html
+- implement uploadPhoto function
+- use storage api to send into uploads/uid/date().extension
+- listen to STATE_CHANGES
+- update progress of downloaded file
+- use storage upload task to get the url
+- set the markdown image url link

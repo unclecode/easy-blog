@@ -1,11 +1,12 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState } from "react";
-import { useDocumentDataOnce } from "react-firebase-hooks/firestore";
+import { useDocumentDataOnce, useDocumentData } from "react-firebase-hooks/firestore";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import ReactMarkdown from "react-markdown";
 import AuthCheck from "../../components/AuthCheck";
+import ImageUploader from "../../components/ImageUploader";
 import { auth, firestore, serverTimestamp } from "../../libs/firebase";
 import styles from "../../styles/Admin.module.css";
 export default function AdminPostEditPage({}) {
@@ -24,7 +25,7 @@ function PostManager() {
         `users/${auth.currentUser.uid}/posts/${slug.slug}`
     );
 
-    const [post] = useDocumentDataOnce(postRef);
+    const [post] = useDocumentData(postRef);
     return (
         <main className={styles.container}>
             {post && (
@@ -44,7 +45,7 @@ function PostManager() {
                         <button onClick={() => setPreview(!preview)}>
                             {preview ? "Edit" : "Preview"}
                         </button>
-                        <Link href={`/${post.username}/{post.slug}`}>
+                        <Link href={`/${post.username}/${post.slug}`}>
                             <button className="btn-blue">Live view</button>
                         </Link>
                     </aside>
@@ -65,7 +66,7 @@ function PostForm({ defaultValues, postRef, preview }) {
     const { isDirty, isValid } = formState;
 
     const updatePost = async ({ content, published }) => {
-        await postRef.set({
+        await postRef.update({
             content,
             published,
             updatedAt: serverTimestamp(),
@@ -85,6 +86,7 @@ function PostForm({ defaultValues, postRef, preview }) {
             )}
 
             <div className={preview ? styles.hidden : styles.controls}>
+                <ImageUploader />
                 <textarea
                     name="content"
                     ref={register({
@@ -114,7 +116,7 @@ function PostForm({ defaultValues, postRef, preview }) {
                     />
                     <label htmlFor="published">Published</label>
                 </fieldset>
-
+                
                 <button disabled={!isValid || !isDirty} className="btn-green">
                     Save changes
                 </button>
