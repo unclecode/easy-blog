@@ -6,6 +6,11 @@ import {
 import { useDocumentData } from "react-firebase-hooks/firestore";
 import PostContent from "../../components/PostContent";
 import Metatags from "../../components/Metatags";
+import { useContext } from "react";
+import { UserContext } from "../../libs/context";
+import Link from "next/link";
+import AuthCheck from "../../components/AuthCheck";
+import HeartButton from "../../components/HeartButton";
 
 export async function getStaticProps({ params }) {
     const { username, slug } = params;
@@ -60,6 +65,8 @@ export default function UserPostPage(props) {
     // first time post is genereated in server and may not have anything for realtimePost
     const readyPost = realtimePost || post;
 
+    const { user: currentUser } = useContext(UserContext);
+
     return (
         <main className="container">
             <Metatags title={readyPost.title} description={readyPost.title} />
@@ -71,6 +78,21 @@ export default function UserPostPage(props) {
                 <p>
                     <strong>{readyPost.heartCount || 0} ❤️</strong>
                 </p>
+
+                <AuthCheck
+                    fallback={
+                        <Link href="/enter">
+                            <button>💗 Sign Up</button>
+                        </Link>
+                    }
+                >
+                    <HeartButton postRef={postRef} />
+                </AuthCheck>
+                {currentUser?.uid === post.uid && (
+                    <Link href={`/admin/${post.slug}`}>
+                        <button className="btn-blue">Edit Post</button>
+                    </Link>
+                )}
             </aside>
         </main>
     );

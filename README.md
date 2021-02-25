@@ -6,13 +6,11 @@
 - use useDocumentDataOnce for postRef and get the post data
 - create PostManager html body
 - npm install react-hook-form
-- enable storage in firebase console
-- In firebase.js gey access to STATE_CHANGED
-- Create ImageUpload component
-- Add html
-- implement uploadPhoto function
-- use storage api to send into uploads/uid/date().extension
-- listen to STATE_CHANGES
-- update progress of downloaded file
-- use storage upload task to get the url
-- set the markdown image url link
+- In [username]/[slug].js add Edit post button, by checking if the currentuser.uid == post.uid, and the button bring user to admin/[slug]
+- Create HeartButton component that get postRef as props
+- Get the heartRef by getting the reference to hearts sub collection. postRef.collection('hearts').doc(uid)
+- get heartDoc using useDocumentData hook over the heartRef
+- addHeart, removeHeart functions, both use batch process, and update the postRef and set the heartRef, using increment()
+- add html
+- in [slug], use AuthCheck to show the heart button, and also add a fallback to show sign in button
+  
