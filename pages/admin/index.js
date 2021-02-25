@@ -69,7 +69,7 @@ function CreateNewPost() {
             content: "# Hello World",
             createdAt: serverTimestamp(),
             updatedAt: serverTimestamp(),
-            heartCounts: 0,
+            heartCount: 0,
         };
         console.log(newPost);
         ref.set(newPost)
